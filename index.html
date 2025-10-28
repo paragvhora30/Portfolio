@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parag Vhora - Engineering Program Manager</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="100" height="100" patternUnits="userSpaceOnUse"><path d="M 100 0 L 0 0 0 100" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grid)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .header h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            animation: fadeInDown 1s ease;
+        }
+
+        .header .subtitle {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            opacity: 0.95;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+            animation: fadeInUp 1s ease 0.4s both;
+        }
+
+        .contact-links a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 2px solid white;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .contact-links a:hover {
+            background: white;
+            color: #667eea;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .section {
+            background: white;
+            margin: 30px 0;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            animation: fadeIn 0.8s ease;
+        }
+
+        .section h2 {
+            color: #667eea;
+            font-size: 2em;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #667eea;
+        }
+
+        .summary {
+            font-size: 1.1em;
+            color: #555;
+            line-height: 1.8;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .skill-category {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 20px;
+            border-radius: 10px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+
+        .skill-category h3 {
+            color: #764ba2;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+
+        .skill-category ul {
+            list-style: none;
+        }
+
+        .skill-category li {
+            padding: 5px 0;
+            color: #555;
+        }
+
+        .skill-category li::before {
+            content: "▹ ";
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        .experience-item, .project-item {
+            margin-bottom: 35px;
+            padding: 25px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+            transition: all 0.3s ease;
+        }
+
+        .experience-item:hover, .project-item:hover {
+            background: #e9ecef;
+            transform: translateX(5px);
+        }
+
+        .experience-header, .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+
+        .experience-title, .project-title {
+            font-size: 1.3em;
+            color: #333;
+            font-weight: bold;
+        }
+
+        .company {
+            color: #667eea;
+            font-size: 1.1em;
+            margin-bottom: 5px;
+        }
+
+        .date {
+            color: #888;
+            font-style: italic;
+        }
+
+        .experience-item ul, .project-item ul {
+            margin-left: 20px;
+            margin-top: 15px;
+        }
+
+        .experience-item li, .project-item li {
+            margin-bottom: 10px;
+            color: #555;
+        }
+
+        .education-item {
+            margin-bottom: 25px;
+            padding: 20px;
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            border-radius: 10px;
+        }
+
+        .education-title {
+            font-size: 1.3em;
+            color: #333;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .university {
+            color: #555;
+            font-size: 1.1em;
+            margin-bottom: 5px;
+        }
+
+        .leadership-item {
+            margin-bottom: 20px;
+            padding: 20px;
+            background: #fff3e0;
+            border-radius: 10px;
+            border-left: 4px solid #ff9800;
+        }
+
+        .leadership-item strong {
+            color: #e65100;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2em;
+            }
+
+            .header .subtitle {
+                font-size: 1.2em;
+            }
+
+            .section {
+                padding: 25px;
+            }
+
+            .experience-header, .project-header {
+                flex-direction: column;
+            }
+
+            .date {
+                margin-top: 5px;
+            }
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: scale(1.05);
+        }
+
+        .stat-number {
+            font-size: 2.5em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 1em;
+            opacity: 0.9;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="header-content">
+            <h1>PARAG SUNIL VHORA</h1>
+            <div class="subtitle">Engineering Program Manager | Data Systems & AI</div>
+            <div class="contact-links">
+                <a href="mailto:paragvhora30@gmail.com">📧 Email</a>
+                <a href="tel:+16692928344">📱 +1 669-292-8344</a>
+                <a href="https://www.linkedin.com/in/parag-sunil-vhora-5b43b016a/" target="_blank">💼 LinkedIn</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="stats">
+            <div class="stat-card">
+                <div class="stat-number">6+</div>
+                <div class="stat-label">Years Experience</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">20+</div>
+                <div class="stat-label">Data Flows Integrated</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">75%</div>
+                <div class="stat-label">ETL Load Time Reduction</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">3.8</div>
+                <div class="stat-label">GPA (M.S. Engineering)</div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>About Me</h2>
+            <p class="summary">
+                A results-driven Engineering Program Manager combining 6+ years of experience in data systems engineering, automation, and program delivery across Deloitte, Tech Mahindra, and Cognizant. Proven ability to bridge technical architecture with business priorities, driving scalable solutions, optimizing operations, and enabling stakeholder success across complex enterprise ecosystems.
+            </p>
+        </div>
+
+        <div class="section">
+            <h2>Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Program & Project Management</h3>
+                    <ul>
+                        <li>Agile/Scrum</li>
+                        <li>JIRA</li>
+                        <li>Workfront</li>
+                        <li>Azure DevOps (ADO)</li>
+                        <li>ServiceNow</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Data & Cloud Systems</h3>
+                    <ul>
+                        <li>AWS & Azure</li>
+                        <li>Databricks</li>
+                        <li>Informatica</li>
+                        <li>Apache NiFi</li>
+                        <li>Airflow & PySpark</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Automation & Scripting</h3>
+                    <ul>
+                        <li>Python & SQL</li>
+                        <li>C#</li>
+                        <li>API Integrations</li>
+                        <li>Process Automation</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Analytics & Reporting</h3>
+                    <ul>
+                        <li>Power BI</li>
+                        <li>Tableau</li>
+                        <li>Databricks SQL</li>
+                        <li>Oracle & MySQL</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Collaboration Tools</h3>
+                    <ul>
+                        <li>GitHub</li>
+                        <li>Confluence</li>
+                        <li>SharePoint</li>
+                        <li>Cross-functional Leadership</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Professional Experience</h2>
+
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div>
+                        <div class="company">Deloitte USI</div>
+                        <div class="experience-title">Data Systems & Program Manager (AI & Data Engineering)</div>
+                    </div>
+                    <div class="date">Jan 2022 – Jan 2025</div>
+                </div>
+                <ul>
+                    <li>Spearheaded enterprise-scale data systems modernization on AWS and Azure for power & utilities clients, integrating 20+ data flows across business units for regulatory compliance and operational visibility</li>
+                    <li>Partnered with leadership across Customer Success and Engineering to translate strategic requirements into technical solutions and measurable outcomes</li>
+                    <li>Designed and deployed a PySpark automation utility in Databricks that reduced ETL load times by 75%, saving 100+ hours/month in monitoring and manual effort</li>
+                    <li>Led a 5-member cross-functional engineering team to deliver critical data modules with <1% defect rate, improving system reliability and data accuracy across reporting layers</li>
+                    <li>Managed Agile delivery cycles, sprint planning, backlog grooming, risk tracking, and stakeholder reporting using JIRA and ADO Boards</li>
+                    <li>Collaborated with business and DevOps teams to design reusable automation frameworks in C# and Python, streamlining workflows firm-wide</li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div>
+                        <div class="company">Tech Mahindra</div>
+                        <div class="experience-title">Senior Software Engineer – Data Modernization Programs</div>
+                    </div>
+                    <div class="date">June 2021 – Dec 2021</div>
+                </div>
+                <ul>
+                    <li>Directed the redesign of data platform architecture for a global pharmaceutical client, addressing latency and scalability issues in legacy ETL systems</li>
+                    <li>Built a reusable ETL orchestration framework (25+ pipelines), resulting in 200+ hours/month saved in operational processing</li>
+                    <li>Conducted UAT, demos, and client code reviews, improving visibility and traceability across development sprints</li>
+                    <li>Automated historical data ingestion from 10+ enterprise applications, enabling seamless integration and accelerating reporting turnaround</li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div>
+                        <div class="company">Cognizant Technology Solutions</div>
+                        <div class="experience-title">Programmer Analyst – Data Engineering</div>
+                    </div>
+                    <div class="date">Nov 2018 – Jun 2021</div>
+                </div>
+                <ul>
+                    <li>Supported data warehouse development and optimization for life sciences domain clients, ensuring 99.9% data accuracy and timely delivery of analytics reports</li>
+                    <li>Developed complex Informatica mappings and performance tuning scripts, reducing ETL runtime by 40%</li>
+                    <li>Collaborated with QA and business analysts to standardize validation frameworks, improving release reliability</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Key Projects</h2>
+
+            <div class="project-item">
+                <div class="project-header">
+                    <div>
+                        <div class="project-title">Production Forecasting & Scheduling Optimization</div>
+                        <div class="company">San José State University</div>
+                    </div>
+                    <div class="date">Spring 2025</div>
+                </div>
+                <ul>
+                    <li>Built and validated demand forecasting models (classical + advanced research-based) with MAD performance testing, generating 5-week forecasts for five product lines</li>
+                    <li>Designed a capacity and scheduling framework integrating BOM, routings, setup/downtime, and cost constraints, reducing cycle time and backorder risks</li>
+                    <li>Delivered recommendations for cost reduction, inventory optimization, and improved machine utilization, presented in a 10-page technical report to management</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Education</h2>
+
+            <div class="education-item">
+                <div class="education-title">Master of Science in Engineering Management</div>
+                <div class="university">San Jose State University, San Jose, California</div>
+                <div class="date">Jan 2025 - Present | GPA: 3.8/4.00</div>
+            </div>
+
+            <div class="education-item">
+                <div class="education-title">Bachelor of Engineering in Electrical Engineering</div>
+                <div class="university">Shri Ramdeobaba College of Engineering and Management, Nagpur, India</div>
+                <div class="date">August 2014 - May 2018</div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Leadership & Campus Engagement</h2>
+
+            <div class="leadership-item">
+                <strong>Secretary, International Student Organization (ISO), SJSU</strong>
+                Managed communications, coordinated events, and maintained records to support 300+ international students
+            </div>
+
+            <div class="leadership-item">
+                <strong>Vice President, Rotaract Club & Robotics Club (RCOEM)</strong>
+                Led 100+ students in technical workshops and 150+ volunteers in community service events, driving both innovation and social impact
+            </div>
+        </div>
+    </div>
+</body>
+</html>
